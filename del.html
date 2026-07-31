@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Clients | Aleed Traders</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+/* ===========================================================
+   ALEED TRADERS — Design tokens (shared across the site)
+   =========================================================== */
+:root{
+  --ink: #14151A;
+  --ink-soft: #55575E;
+  --paper: #F6F5F2;
+  --line: rgba(20,21,26,0.08);
+  --accent: #3D5AFE;
+  --accent-light: #7C93FF;
+  --gold: #D9A441;
+  --green: #1F8A5F;
+  --radius: 6px;
+  --radius-lg: 22px;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+body{
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5{ font-family: 'Playfair Display', serif; color: var(--ink); }
+
+.text-accent{ color: var(--accent); }
+.text-gold{ color: var(--gold); }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+
+/* ===== Scroll progress ===== */
+.scroll-progress{
+  position: fixed; top:0; left:0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  z-index: 1100;
+  transition: width .1s linear;
+}
+
+/* ===== Navbar ===== */
+#mainNav{
+  background: rgba(246,245,242,0);
+  transition: background .35s ease, box-shadow .35s ease, padding .35s ease;
+  padding: 20px 0;
+}
+#mainNav.scrolled{
+  background: rgba(246,245,242,.96);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 20px rgba(20,21,26,.08);
+  padding: 10px 0;
+}
+.brand-mark{
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--ink); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; transition: all .3s ease;
+}
+#mainNav.scrolled .brand-mark{ width: 34px; height: 34px; font-size: 1rem; }
+.brand-word{ font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); }
+.brand-word span{ color: var(--accent); }
+
+.navbar-nav .nav-link{
+  color: var(--ink);
+  font-weight: 500;
+  font-size: .93rem;
+  padding: 8px 14px !important;
+  position: relative;
+  transition: color .2s;
+}
+.navbar-nav .nav-link::after{
+  content:"";
+  position: absolute;
+  left: 14px; right: 14px; bottom: 4px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+.navbar-nav .nav-link:hover{ color: var(--accent); }
+.navbar-nav .nav-link:hover::after{ transform: scaleX(1); }
+.navbar-nav .nav-link.active{ color: var(--accent); }
+.navbar-nav .nav-link.active::after{ transform: scaleX(1); }
+
+.btn-cta{
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  color: #fff;
+  font-weight: 600;
+  font-size: .88rem;
+  padding: 11px 24px;
+  border-radius: var(--radius);
+  transition: all .25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-cta::before{
+  content:"";
+  position: absolute; inset: 0;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform .3s ease;
+  z-index: 0;
+}
+.btn-cta span, .btn-cta i{ position: relative; z-index: 1; }
+.btn-cta:hover::before{ transform: translateX(0); }
+.btn-cta:hover{ color: #fff; border-color: var(--accent); transform: translateY(-2px); }
+
+.btn-outline-dark-custom{
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: .88rem;
+  padding: 11px 24px;
+  border-radius: var(--radius);
+  transition: all .25s ease;
+  background: transparent;
+}
+.btn-outline-dark-custom:hover{ background: var(--ink); color: #fff; transform: translateY(-2px); }
+
+/* ===== Page hero (compact variant of the site hero) ===== */
+.page-hero{
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  padding-top: 130px;
+  padding-bottom: 50px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.hero-orb{ position: absolute; border-radius: 50%; filter: blur(70px); opacity: .35; z-index: 0; }
+.orb-1{ width: 420px; height: 420px; background: var(--accent); top: -120px; right: -100px; animation: floatOrb 12s ease-in-out infinite; }
+.orb-2{ width: 320px; height: 320px; background: var(--gold); bottom: -120px; left: -80px; animation: floatOrb 15s ease-in-out infinite reverse; }
+@keyframes floatOrb{ 0%,100%{ transform: translate(0,0) scale(1); } 50%{ transform: translate(30px,-30px) scale(1.08); } }
+.hero-grid-lines{
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(20,21,26,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20,21,26,.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+  z-index: 0;
+  mask-image: radial-gradient(circle at 60% 30%, black, transparent 70%);
+}
+.hero-inner{ position: relative; z-index: 2; }
+
+.eyebrow{
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .74rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 7px 16px;
+  border-radius: 30px;
+  margin-bottom: 24px;
+}
+.eyebrow i{ color: var(--gold); }
+
+.hero-title{ font-size: clamp(2.2rem, 4.2vw, 3.3rem); line-height: 1.15; font-weight: 700; margin-bottom: 20px; }
+.hero-sub{ color: var(--ink-soft); font-size: 1.06rem; max-width: 600px; line-height: 1.75; }
+
+.hero-stats{ max-width: 620px; }
+.stat-num{ font-family: 'JetBrains Mono', monospace; font-size: 1.9rem; font-weight: 700; color: var(--ink); }
+.stat-label{ color: var(--ink-soft); font-size: .76rem; text-transform: uppercase; letter-spacing: .04em; }
+
+/* ===== Trust marquee ===== */
+.trust-strip{ background: var(--ink); padding: 16px 0; overflow: hidden; }
+.marquee{ width: 100%; }
+.marquee-track{ display: flex; gap: 22px; width: max-content; animation: scrollMarquee 30s linear infinite; }
+.marquee-track span{ color: rgba(255,255,255,.65); font-family: 'JetBrains Mono', monospace; font-size: .78rem; letter-spacing: .08em; white-space: nowrap; }
+.marquee-track span:nth-child(odd){ color: var(--gold); }
+@keyframes scrollMarquee{ 0%{ transform: translateX(0); } 100%{ transform: translateX(-50%); } }
+
+/* ===== Section generic ===== */
+section{ padding: 100px 0; position: relative; }
+.section-eyebrow{
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .76rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--accent);
+}
+.section-title{ font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700; margin-bottom: 20px; }
+.section-text{ color: var(--ink-soft); font-size: 1rem; line-height: 1.75; }
+
+/* ===== Reveal-on-scroll ===== */
+.reveal{ opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1); }
+.reveal.reveal-left{ transform: translateX(-36px); }
+.reveal.reveal-right{ transform: translateX(36px); }
+.reveal.visible{ opacity: 1; transform: translate(0,0); }
+
+/* ===== Filter pills ===== */
+.filter-section{ padding: 46px 0 10px; }
+.filter-btn{
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: .6rem 1.35rem;
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: .86rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.filter-btn:hover, .filter-btn.active{
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(20,21,26,.15);
+}
+
+/* ===== Case study cards ===== */
+.case-card{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  transition: box-shadow .35s ease, transform .35s ease;
+}
+.case-card:hover{ box-shadow: 0 30px 60px rgba(20,21,26,.1); transform: translateY(-4px); }
+.case-card.hide{ display: none; }
+
+.case-body{ padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; }
+.case-header{ display: flex; align-items: center; gap: 1.1rem; margin-bottom: 1.4rem; }
+.case-avatar{
+  width: 60px; height: 60px; border-radius: 14px;
+  background: var(--paper); border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; color: var(--accent); flex: none;
+}
+.case-title h2{ font-size: 1.45rem; margin-bottom: 2px; }
+.case-subtitle{ font-family: 'JetBrains Mono', monospace; font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+
+.tags-list{ display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.3rem; }
+.tag{ background: var(--paper); color: var(--ink-soft); padding: .3rem .8rem; border-radius: 6px; font-size: .74rem; font-weight: 600; border: 1px solid var(--line); }
+.tag.accent{ background: rgba(61,90,254,.08); color: var(--accent); border-color: rgba(61,90,254,.2); }
+.tag.gold{ background: rgba(217,164,65,.1); color: #a5762c; border-color: rgba(217,164,65,.3); }
+
+.case-desc{ color: var(--ink-soft); font-size: .96rem; line-height: 1.7; margin-bottom: 1.4rem; }
+
+.services-delivered h4{
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .74rem; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); margin-bottom: .8rem;
+}
+.services-delivered ul{ list-style: none; padding: 0; margin: 0 0 1.8rem; display: flex; flex-direction: column; gap: .55rem; }
+.services-delivered li{ font-size: .9rem; display: flex; align-items: flex-start; gap: 10px; color: var(--ink); }
+.services-delivered li i{ color: var(--green); margin-top: 4px; }
+
+.case-action .btn-action{
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--ink); color: #fff;
+  padding: .78rem 1.5rem; border-radius: var(--radius);
+  font-weight: 600; font-size: .9rem; transition: all .25s ease;
+}
+.case-action .btn-action:hover{ background: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(61,90,254,.3); }
+.case-action .btn-action.ig:hover{ background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); box-shadow: 0 10px 22px rgba(220,39,67,.3); }
+
+/* ===== Case media panel ===== */
+.case-media{
+  background: var(--paper);
+  padding: 2.2rem;
+  display: flex; flex-direction: column; justify-content: center; gap: 1.3rem;
+  border-left: 1px solid var(--line);
+}
+
+/* Browser-window mockup (Nutridrybites) */
+.browser-mock{ background: #fff; border-radius: 14px; border: 1px solid var(--line); overflow: hidden; box-shadow: 0 18px 30px rgba(20,21,26,.08); transition: transform .3s ease; }
+.browser-mock:hover{ transform: scale(1.015); }
+.browser-bar{ display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #f1f0ed; border-bottom: 1px solid var(--line); }
+.browser-dot{ width: 9px; height: 9px; border-radius: 50%; background: #d8d6d1; }
+.browser-url{
+  margin-left: 10px; font-family: 'JetBrains Mono', monospace; font-size: .7rem;
+  color: var(--ink-soft); background: #fff; border: 1px solid var(--line);
+  padding: 3px 10px; border-radius: 20px; flex: 1;
+}
+.browser-screen{
+  height: 190px; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #0d3b2c 0%, #1F8A5F 60%, #58b98a 100%);
+  display: flex; align-items: center; justify-content: center; color: #fff; text-align: center;
+}
+.browser-screen .leaf-ring{ position: absolute; inset: 14px; border: 1px dashed rgba(255,255,255,.35); border-radius: 10px; }
+.browser-screen h3{ color: #fff; font-size: 1.15rem; margin-bottom: 2px; letter-spacing: .02em; }
+.browser-screen p{ font-size: .76rem; opacity: .85; margin: 0; font-family: 'Inter', sans-serif; }
+.browser-screen .leaf-icon{ font-size: 1.6rem; margin-bottom: 6px; display: block; }
+
+/* Instagram-profile mockup (Starmech) */
+.ig-mock{ background: #fff; border-radius: 14px; border: 1px solid var(--line); overflow: hidden; box-shadow: 0 18px 30px rgba(20,21,26,.08); transition: transform .3s ease; }
+.ig-mock:hover{ transform: scale(1.015); }
+.ig-head{ display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.ig-avatar{
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg,#0f172a,#1e3a8a); display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: .95rem; flex: none;
+}
+.ig-handle{ font-weight: 700; font-size: .84rem; }
+.ig-handle span{ display: block; font-weight: 500; font-size: .68rem; color: var(--ink-soft); font-family: 'JetBrains Mono', monospace; }
+.ig-grid{ display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.ig-post{ aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.05rem; background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); }
+.ig-post:nth-child(2){ background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+.ig-post:nth-child(3){ background: linear-gradient(135deg, #0f172a 0%, #38507a 100%); }
+.ig-post:nth-child(4){ background: linear-gradient(135deg, #172554 0%, #0f172a 100%); }
+.ig-post:nth-child(5){ background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+.ig-post:nth-child(6){ background: linear-gradient(135deg, #24406b 0%, #0f172a 100%); }
+
+.media-note{ font-size: .84rem; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 8px; }
+.media-note i{ color: var(--gold); margin-top: 3px; }
+
+/* ===== Advantages ===== */
+.adv-card{ padding: 2rem; border-radius: var(--radius-lg); background: var(--paper); border: 1px solid var(--line); transition: all .3s ease; height: 100%; }
+.adv-card:hover{ transform: translateY(-6px); background: #fff; box-shadow: 0 20px 40px rgba(20,21,26,.08); }
+.adv-icon{ width: 48px; height: 48px; border-radius: 10px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1.1rem; }
+.adv-card h3{ font-size: 1.15rem; margin-bottom: .5rem; }
+.adv-card p{ font-size: .9rem; color: var(--ink-soft); margin: 0; }
+
+/* ===== CTA ===== */
+.cta-section{ background: linear-gradient(135deg, var(--ink) 0%, #1e293b 100%); color: #fff; text-align: center; }
+.cta-section h2{ color: #fff; font-size: clamp(1.8rem,3.4vw,2.4rem); font-weight: 800; margin-bottom: 1rem; }
+.cta-section p{ color: rgba(255,255,255,.65); font-size: 1.05rem; margin-bottom: 2rem; }
+.btn-cta-primary{ background: var(--accent); color: #fff; padding: .9rem 2rem; border-radius: var(--radius); font-weight: 700; transition: all .25s ease; }
+.btn-cta-primary:hover{ background: #2f47db; box-shadow: 0 10px 26px rgba(61,90,254,.4); color:#fff; transform: translateY(-2px); }
+.btn-cta-outline{ background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.3); padding: .9rem 2rem; border-radius: var(--radius); font-weight: 700; transition: all .25s ease; }
+.btn-cta-outline:hover{ background: rgba(255,255,255,.06); border-color: #fff; color: #fff; transform: translateY(-2px); }
+
+footer{ background: #0c0d12; color: rgba(255,255,255,.45); text-align: center; padding: 2rem 0; font-size: .88rem; border-top: 1px solid #1e293b; }
+
+@media (max-width: 992px){
+  .case-card{ grid-template-columns: 1fr; }
+  .case-media{ border-left: none; border-top: 1px solid var(--line); }
+}
+@media (max-width: 768px){
+  .hero-title{ font-size: 2rem; }
+  .case-body{ padding: 2rem; }
+  .case-media{ padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <span class="brand-mark"><i class="bi bi-gear-fill"></i></span>
+      <span class="brand-word">Aleed <span>Traders</span></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="bussines_startup.html">Bussines Startup</a></li>
+        <li class="nav-item"><a class="nav-link" href="consultation.html">Consulting</a></li>
+        <li class="nav-item"><a class="nav-link" href="achivements.html">Achivements</a></li>
+        <li class="nav-item"><a class="nav-link active" href="clients.html">Clients</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="btn btn-cta" href="#contact"><span>Let's Talk <i class="bi bi-arrow-up-right"></i></span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== PAGE HERO ===== -->
+<header class="page-hero" id="top">
+  <div class="hero-orb orb-1"></div>
+  <div class="hero-orb orb-2"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="container hero-inner">
+    <div class="row align-items-center">
+      <div class="col-lg-9">
+        <span class="eyebrow reveal"><i class="bi bi-award-fill"></i> Proven Track Record</span>
+        <h1 class="hero-title reveal">Businesses we've taken from <span class="text-accent">concept</span> to <span class="text-gold">scale</span>.</h1>
+        <p class="hero-sub reveal">Two very different clients, one standard: built to last. From a locally‑manufactured commercial dehydrator and a full brand launch for Nutridrybites, to import sourcing and social growth for Starmech — see how Aleed Traders delivers end‑to‑end.</p>
+
+        <div class="hero-stats row mt-5 gx-4 reveal">
+          <div class="col-4">
+            <div class="stat-num" data-count="2">0</div>
+            <div class="stat-label">Flagship Clients</div>
+          </div>
+          <div class="col-4">
+            <div class="stat-num" data-count="100">0</div>
+            <div class="stat-label">% In-house Delivery</div>
+          </div>
+          <div class="col-4">
+            <div class="stat-num" data-count="360">0</div>
+            <div class="stat-label">° Service Scope</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== TRUST MARQUEE ===== -->
+<div class="trust-strip">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>NUTRIDRYBITES PARTNER</span><span>•</span>
+      <span>STARMECH PARTNER</span><span>•</span>
+      <span>INDUSTRIAL SUPPLY</span><span>•</span>
+      <span>WEB DESIGN</span><span>•</span>
+      <span>BRAND IDENTITY</span><span>•</span>
+      <span>SOCIAL MEDIA GROWTH</span><span>•</span>
+      <span>CUSTOM MANUFACTURING</span><span>•</span>
+      <span>NUTRIDRYBITES PARTNER</span><span>•</span>
+      <span>STARMECH PARTNER</span><span>•</span>
+      <span>INDUSTRIAL SUPPLY</span><span>•</span>
+      <span>WEB DESIGN</span><span>•</span>
+      <span>BRAND IDENTITY</span><span>•</span>
+      <span>SOCIAL MEDIA GROWTH</span><span>•</span>
+      <span>CUSTOM MANUFACTURING</span><span>•</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FILTER BUTTONS ===== -->
+<div class="filter-section">
+  <div class="container d-flex flex-wrap justify-content-center gap-2">
+    <button class="filter-btn active" data-filter="all">All Success Stories</button>
+    <button class="filter-btn" data-filter="setup">Full Business Setup</button>
+    <button class="filter-btn" data-filter="machinery">Machinery Solutions</button>
+    <button class="filter-btn" data-filter="digital">Digital &amp; Marketing</button>
+  </div>
+</div>
+
+<!-- ===== CASE STUDIES ===== -->
+<section id="cases" style="padding-top:40px;">
+  <div class="container">
+    <div class="d-flex flex-column gap-4">
+
+      <!-- CLIENT 1: NUTRIDRYBITES -->
+      <div class="case-card reveal reveal-left" data-category="setup machinery digital">
+        <div class="case-body">
+          <div>
+            <div class="case-header">
+              <div class="case-avatar"><i class="bi bi-leaf-fill" style="color:#1F8A5F;"></i></div>
+              <div class="case-title">
+                <h2>Nutridrybites</h2>
+                <span class="case-subtitle">Organic Dried Foods Brand</span>
+              </div>
+            </div>
+
+            <div class="tags-list">
+              <span class="tag accent">Full Business Setup</span>
+              <span class="tag">Custom Dehydrator</span>
+              <span class="tag">Web Development</span>
+              <span class="tag">Logo &amp; Branding</span>
+            </div>
+
+            <p class="case-desc">Nutridrybites partnered with Aleed Traders for a comprehensive turn-key launch. From manufacturing industrial drying equipment to crafting their digital e-commerce presence, we built their brand ecosystem ground-up.</p>
+
+            <div class="services-delivered">
+              <h4>Services Provided</h4>
+              <ul>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Commercial Dehydrator:</strong> Locally manufactured heavy-duty dehydrator with custom plates &amp; trays.</li>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Brand Identity:</strong> Designed company logo, packaging aesthetic, and brand assets.</li>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>E-Commerce Web Dev:</strong> Custom UI/UX design &amp; store development (nutridrybites.com).</li>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Digital Marketing:</strong> End-to-end social media setup &amp; content creation.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="case-action">
+            <a href="https://nutridrybites.com/" target="_blank" rel="noopener" class="btn-action">Visit Live Website <i class="bi bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="case-media">
+          <div class="browser-mock">
+            <div class="browser-bar">
+              <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+              <span class="browser-url"><i class="bi bi-lock-fill" style="font-size:.62rem;"></i> nutridrybites.com</span>
+            </div>
+            <div class="browser-screen">
+              <div class="leaf-ring"></div>
+              <div>
+                <i class="bi bi-flower1 leaf-icon"></i>
+                <h3>NUTRIDRYBITES</h3>
+                <p>Premium Dehydrated Fruits &amp; Snacks</p>
+              </div>
+            </div>
+          </div>
+          <div class="media-note"><i class="bi bi-box-seam"></i> Hardware delivered: custom dehydrator unit + fixed-price plate &amp; sheet set.</div>
+        </div>
+      </div>
+
+      <!-- CLIENT 2: STARMECH -->
+      <div class="case-card reveal reveal-right" data-category="machinery digital">
+        <div class="case-body">
+          <div>
+            <div class="case-header">
+              <div class="case-avatar" style="background:var(--ink); color:var(--gold);"><i class="bi bi-gear-wide-connected"></i></div>
+              <div class="case-title">
+                <h2>Starmech</h2>
+                <span class="case-subtitle">Industrial Machinery Solutions</span>
+              </div>
+            </div>
+
+            <div class="tags-list">
+              <span class="tag gold">Imported Machinery</span>
+              <span class="tag">China Sourcing</span>
+              <span class="tag">Social Media Growth</span>
+            </div>
+
+            <p class="case-desc">Starmech needed strategic positioning to market high-grade imported industrial equipment across Pakistan. Aleed Traders facilitated machinery sourcing specs and manages their digital marketing campaigns.</p>
+
+            <div class="services-delivered">
+              <h4>Services Provided</h4>
+              <ul>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Import Sourcing Support:</strong> Facilitated machinery specifications for imports from China to Pakistan.</li>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Social Media Management:</strong> Created professional graphic posts, product reels, and promotional strategy.</li>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Brand Positioning:</strong> Built a high-trust digital presence targeting B2B industrial clients.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="case-action">
+            <a href="https://www.instagram.com/starmech.pk?igsh=cWZ4bXg0NWQ1eDE3" target="_blank" rel="noopener" class="btn-action ig">Explore Instagram Profile <i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="case-media">
+          <div class="ig-mock">
+            <div class="ig-head">
+              <span class="ig-avatar"><i class="bi bi-cpu-fill"></i></span>
+              <span class="ig-handle">starmech.pk<span>Industrial China Machinery Importers</span></span>
+            </div>
+            <div class="ig-grid">
+              <span class="ig-post"><i class="bi bi-scissors"></i></span>
+              <span class="ig-post"><i class="bi bi-cup-straw"></i></span>
+              <span class="ig-post"><i class="bi bi-diagram-3-fill"></i></span>
+              <span class="ig-post"><i class="bi bi-gear-fill"></i></span>
+              <span class="ig-post"><i class="bi bi-box-seam-fill"></i></span>
+              <span class="ig-post"><i class="bi bi-truck"></i></span>
+            </div>
+          </div>
+          <div class="media-note"><i class="bi bi-truck"></i> Equipment spectrum: fruit &amp; vegetable cutters, juicers, and processing units.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== ADVANTAGES ===== -->
+<section style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="section-eyebrow">Why Clients Stay</span>
+      <h2 class="section-title">One partner, every discipline</h2>
+      <p class="section-text mx-auto" style="max-width:620px;">Your one-stop partner combining physical equipment manufacturing with modern digital agency capabilities.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 reveal">
+        <div class="adv-card">
+          <div class="adv-icon"><i class="bi bi-wrench-adjustable-circle-fill"></i></div>
+          <h3>Custom Manufacturing</h3>
+          <p>In-house designed &amp; built dehydrators complete with plates, trays, and customised operational specs.</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="adv-card">
+          <div class="adv-icon" style="background:var(--gold);"><i class="bi bi-ship"></i></div>
+          <h3>China Import Channel</h3>
+          <p>Direct sourcing of commercial vegetable/fruit cutters, juicers, and processing machinery from China to Pakistan.</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="adv-card">
+          <div class="adv-icon" style="background:var(--green);"><i class="bi bi-code-slash"></i></div>
+          <h3>360° Digital Agency</h3>
+          <p>Complete web development, UI/UX, logo design, data management, and social media marketing under one roof.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="mx-auto reveal" style="max-width:700px;">
+      <h2>Ready to build or scale your business?</h2>
+      <p>Whether you need custom-built dehydrators, imported equipment, or a complete web &amp; brand launch package, Aleed Traders delivers turnkey solutions.</p>
+      <div class="d-flex justify-content-center flex-wrap gap-3">
+        <a href="#contact" class="btn-cta-primary">Get Business Setup Quote</a>
+        <a href="#contact" class="btn-cta-outline">Contact Support</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p class="mb-0">&copy; 2026 Aleed Traders. All Rights Reserved. Machinery Manufacturing &amp; Digital Solutions.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Scroll progress bar
+  const progress = document.getElementById('scrollProgress');
+  const nav = document.getElementById('mainNav');
+  function onScroll(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+    nav.classList.toggle('scrolled', h.scrollTop > 10);
+  }
+  document.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Animated stat counters
+  const statEls = document.querySelectorAll('.stat-num[data-count]');
+  function animateCount(el){
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    const duration = 1200;
+    const start = performance.now();
+    function step(now){
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        animateCount(entry.target);
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  statEls.forEach(el => statObserver.observe(el));
+
+  // Client filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const caseCards = document.querySelectorAll('.case-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      caseCards.forEach(card => {
+        const cats = card.getAttribute('data-category');
+        card.classList.toggle('hide', !(filter === 'all' || cats.includes(filter)));
+      });
+    });
+  });
+</script>
+</body>
+</html>
