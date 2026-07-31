@@ -97,6 +97,75 @@ h1,h2,h3,h4,h5{
 }
 .navbar-nav .nav-link.active::after,
 .navbar-nav .nav-link:hover::after{ transform: scaleX(1); }
+
+/* =====================================================================
+   MOBILE / RESPONSIVE NAVBAR FIX (added)
+   Makes the collapsed mobile menu solid, readable, and properly spaced
+   on phones, small tablets, and all breakpoints in between.
+   ===================================================================== */
+@media (max-width: 991.98px){
+  #mainNav{
+    background: rgba(246,245,242,.98) !important;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 16px rgba(20,21,26,.10);
+    padding: 12px 0;
+  }
+  #mainNav .navbar-brand{ position: relative; z-index: 1056; }
+  .brand-logo{ height: 32px; }
+
+  #mainNav .navbar-toggler{
+    border: none;
+    padding: 4px 8px;
+    position: relative;
+    z-index: 1056;
+  }
+  #mainNav .navbar-toggler:focus{ box-shadow: 0 0 0 2px rgba(61,90,254,.35); }
+
+  #navMenu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    box-shadow: 0 18px 32px rgba(20,21,26,.14);
+    padding: 8px 24px 22px;
+    max-height: calc(100dvh - 70px);
+    overflow-y: auto;
+    z-index: 1055;
+  }
+
+  .navbar-nav{ gap: 0 !important; }
+  .navbar-nav .nav-link{
+    padding: 13px 4px !important;
+    border-bottom: 1px solid var(--line);
+    font-size: 1rem;
+  }
+  .navbar-nav .nav-link::after{ display: none; }
+  .navbar-nav .nav-item:last-of-type .nav-link{ border-bottom: none; }
+
+  .navbar-nav .nav-item.ms-lg-2{ margin: 16px 0 4px; }
+  .navbar-nav .nav-item.ms-lg-2 .btn-cta{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 420px){
+  .navbar > .container,
+  .navbar > .container-fluid{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .brand-logo{ height: 28px; }
+  .navbar-nav .nav-link{ font-size: .95rem; }
+}
+
 .navbar-nav .nav-link:hover{ color: var(--accent); }
 
 .btn-cta{
