@@ -465,112 +465,126 @@ section{ padding: 100px 0; position: relative; }
 @media (max-width: 767.98px){ .card-bottom{ margin-left: 0; } }
 
 /* ===== Products ===== */
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+
 .featured-products{
-    padding:80px 0;
-    background:#fff;
+  padding:60px 20px;
+}
+
+.container{
+  max-width:1100px;
+  margin:0 auto;
 }
 
 .section-heading{
-    text-align:center;
-    margin-bottom:40px;
+  text-align:center;
+  margin-bottom:40px;
 }
 
 .section-heading h2{
-    font-size:38px;
-    font-weight:700;
+  font-size:28px;
+  margin:0 0 10px;
+  letter-spacing:.3px;
 }
 
 .section-heading p{
-    color:#777;
+  margin:0 auto;
+  max-width:560px;
+  color:var(--steel);
+  line-height:1.5;
 }
 
 .slider-wrapper{
-    position:relative;
+  position:relative;
+  display:flex;
+  align-items:center;
 }
 
 .product-slider{
-    display:flex;
-    gap:25px;
-    overflow-x:auto;
-    scroll-behavior:smooth;
-    scrollbar-width:none;
-    padding:10px;
+  display:flex;
+  flex:1;
+  min-width:0;
+  gap:20px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  scroll-padding-inline:4px;
+  padding:10px 24px 20px 4px;
+  scrollbar-width:none;
 }
 
 .product-slider::-webkit-scrollbar{
-    display:none;
+  display:none;
 }
 
 .product-card{
-    min-width:300px;
-    flex:0 0 auto;
-    background:#fff;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    transition:.35s;
+  flex:0 0 240px;
+  background:var(--card-bg);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:16px;
+  text-align:center;
+  transition:transform .2s ease, box-shadow .2s ease;
 }
 
 .product-card:hover{
-    transform:translateY(-8px);
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
 .product-card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
+  width:100%;
+  height:150px;
+  object-fit:contain;
+  margin-bottom:14px;
+  background:#f0f1f2;
+  border-radius:6px;
 }
 
 .product-card h4{
-    padding:18px 20px 8px;
-    margin:0;
-    font-size:22px;
+  font-size:16px;
+  margin:0 0 8px;
+  color:var(--ink);
 }
 
 .product-card p{
-    padding:0 20px 20px;
-    color:#666;
+  font-size:13px;
+  color:var(--steel);
+  margin:0;
+  line-height:1.4;
 }
 
 .slider-btn{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    width:48px;
-    height:48px;
-    border:none;
-    border-radius:50%;
-    background:#0b8f5a;
-    color:#fff;
-    font-size:22px;
-    cursor:pointer;
-    z-index:5;
-    transition:.3s;
+  flex-shrink:0;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--ink);
+  font-size:16px;
+  cursor:pointer;
+  z-index:2;
 }
 
 .slider-btn:hover{
-    background:#066c43;
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
 }
 
-.prev{
-    left:-20px;
-}
+.slider-btn.prev{ margin-right:12px; }
+.slider-btn.next{ margin-left:12px; }
 
-.next{
-    right:-20px;
-}
-
-@media(max-width:768px){
-
-.product-card{
-    min-width:260px;
-}
-
-.prev,
-.next{
-    display:none;
-}
-
+@media (max-width:600px){
+  .product-card{ flex:0 0 200px; }
+  .slider-btn{ width:34px; height:34px; }
 }
 
 /* ===== Services (dark) ===== */
@@ -967,6 +981,207 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .badge-top, .badge-bottom{ position: static; margin-bottom: 10px; display:inline-flex; }
 }
 
+/* ===== cargo===== */
+.import-china {
+    --navy: #0b2545;
+    --navy-light: #13355e;
+    --gold: #c8912a;
+    --ink: #1b1f27;
+    --muted: #5b6472;
+    --line: #dfe4ea;
+    background: #f7f8fa;
+    padding: 72px 0;
+    font-family: "Segoe UI", Roboto, -apple-system, sans-serif;
+    color: var(--ink);
+  }
+ 
+  .import-china .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+ 
+  .import-china .section-heading {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 48px;
+  }
+ 
+  .import-china .eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+ 
+  .import-china .section-heading h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0 0 12px;
+  }
+ 
+  .import-china .section-heading p {
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin: 0;
+  }
+ 
+  .import-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+ 
+  .import-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 32px 28px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease;
+  }
+ 
+  .import-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+ 
+  .import-card:hover {
+    box-shadow: 0 10px 28px rgba(11, 37, 69, 0.1);
+  }
+ 
+  .import-card .card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy);
+    color: #fff;
+    margin-bottom: 18px;
+  }
+ 
+  .import-card[data-route="air"] .card-icon {
+    background: var(--gold);
+  }
+ 
+  .import-card .card-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--navy-light);
+    background: #eef2f7;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+ 
+  .import-card[data-route="air"] .card-tag {
+    color: #7a5716;
+    background: #fbf1de;
+  }
+ 
+  .import-card h3 {
+    font-size: 22px;
+    margin: 0 0 10px;
+    color: var(--navy);
+  }
+ 
+  .import-card > p {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0 0 18px;
+  }
+ 
+  .import-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px;
+  }
+ 
+  .import-card ul li {
+    font-size: 14px;
+    color: var(--ink);
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+ 
+  .import-card ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+ 
+  .import-card .card-footer {
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+ 
+  .import-card .eta {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy-light);
+  }
+ 
+  .import-cta {
+    text-align: center;
+    margin-top: 44px;
+  }
+ 
+  .import-cta p {
+    color: var(--muted);
+    margin: 0 0 14px;
+    font-size: 15px;
+  }
+ 
+  .btn-quote {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14.5px;
+    padding: 13px 30px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+ 
+  .btn-quote:hover {
+    background: var(--navy-light);
+  }
+ 
+  @media (max-width: 768px) {
+    .import-grid {
+      grid-template-columns: 1fr;
+    }
+    .import-china .section-heading h2 {
+      font-size: 26px;
+    }
+  }
+ 
+  @media (prefers-reduced-motion: reduce) {
+    .import-card {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
 </style>
 <body>
 
@@ -982,13 +1197,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navMenu">
-      <ul class="navbar-nav align-items-lg-center gap-lg-1"> 
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
-        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="bussines_startup.html">Bussines Startup</a></li>
-        <li class="nav-item"><a class="nav-link" href="consultation.html">Consulting</a></li>
-         <li class="nav-item"><a class="nav-link" href="clients.html">Clients</a></li>
+      <ul class="navbar-nav align-items-lg-center gap-lg-1">  
+        <li class="nav-item"><a class="nav-link" href=" #products">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="#machine">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href=" #services">Services</a></li> 
          
       </ul>
     </div>
@@ -1078,15 +1290,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         </div>
         <i class="bi bi-arrow-right pillar-arrow"></i>
       </a>
-      <a href="product.html" class="pillar-row reveal" style="transition-delay:.08s;">
+      <a href="#products" class="pillar-row reveal" style="transition-delay:.08s;">
         <div class="pillar-icon"><i class="bi bi-gear-wide-connected"></i></div>
         <div>
+          <a href="#machine" class="pillar-row reveal" style="transition-delay:.08s;"></a>
           <h3>Machinery &amp; Import</h3>
           <p>Commercial slice cutters, batch printers, and dehydration equipment — sold, installed, and maintained.</p>
         </div>
         <i class="bi bi-arrow-right pillar-arrow"></i>
       </a>
-      <a href="services.html" class="pillar-row reveal" style="transition-delay:.16s;">
+      <a href=" #services" class="pillar-row reveal" style="transition-delay:.16s;">
         <div class="pillar-icon"><i class="bi bi-laptop"></i></div>
         <div>
           <h3>Digital &amp; Tech Agency</h3>
@@ -1097,9 +1310,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     </div>
   </div>
 </section>
-
+<!-- ===== all productts ===== -->
+ 
 <!-- ===== Featured Dehydrated Fruits & Vegetables ===== -->
-<section class="featured-products">
+<section class="featured-products" id="products">
   <div class="container">
 
     <div class="section-heading">
@@ -1153,6 +1367,61 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   </div>
 </section>
 
+<!-- ===== MACHINERY & EQUIPMENT CATALOG ===== -->
+<section class="featured-products" id="machine">
+  <div class="container">
+ 
+    <div class="section-heading">
+      <h2>Machinery &amp; equipment</h2>
+      <p>Starmech industrial machinery for food processing and packaging — backed by genuine spare parts and maintenance support.</p>
+    </div>
+ 
+    <div class="slider-wrapper">
+ 
+      <button class="slider-btn prev" aria-label="Previous">&#10094;</button>
+ 
+      <div class="product-slider" id="productSlider">
+ 
+        <a href="slicer.html" style="text-decoration: none; color:inherit;">
+          <div class="product-card">
+            <img src="slicer.png" alt="Fruit &amp; Vegetable Slicing Machine">
+            <h4>Fruit &amp; Vegetable Slicing Machine</h4>
+            <p>Continuous slicing for factory-floor production runs.</p>
+          </div>
+        </a>
+ 
+        <a href="juicer.html" style="text-decoration: none; color:inherit;">
+          <div class="product-card">
+            <img src="juicer.png" alt="Cold Press Slow Juicer">
+            <h4>Cold Press Slow Juicer</h4>
+            <p>Low-heat extraction that preserves flavour and nutrients.</p>
+          </div>
+        </a>
+ 
+        <a href="printer.html" style="text-decoration: none; color:inherit;">
+          <div class="product-card">
+            <img src="printer.png" alt="Handheld Batch Coding Printer">
+            <h4>Handheld Batch Coding Printer</h4>
+            <p>Fast, clean batch and expiry coding for packaged goods.</p>
+          </div>
+        </a>
+ 
+        <a href="sheets.html" style="text-decoration: none; color:inherit;">
+          <div class="product-card">
+            <img src="sheets.png" alt="Dehydrator Mesh Sheets">
+            <h4>Dehydrator Mesh Sheets</h4>
+            <p>Durable, food-grade mesh trays for consistent drying.</p>
+          </div>
+        </a>
+ 
+      </div>
+ 
+      <button class="slider-btn next" aria-label="Next">&#10095;</button>
+ 
+    </div>
+ 
+  </div>
+</section>
 <!-- ===== SERVICES ===== -->
 <section class="services-section" id="services">
   <div class="hero-grid-lines lines-dark"></div>
@@ -1205,56 +1474,72 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   </div>
 </section>
 
-<!-- ===== MACHINERY & EQUIPMENT CATALOG ===== -->
-<section class="featured-products">
+<!-- ===== Cargo ===== -->
+<section class="import-china">
   <div class="container">
-
+ 
     <div class="section-heading">
-      <h2>Machinery &amp; equipment</h2>
-      Starmech industrial machinery for food processing and packaging — backed by genuine spare parts and maintenance support.</p>
+      <span class="eyebrow">Aleed Traders · Sourcing &amp; Logistics</span>
+      <h2>Import products from China</h2>
+      <p>Aleed Traders manages end-to-end sourcing and shipping from Chinese suppliers to your doorstep — you choose the route, we handle the rest.</p>
     </div>
-    </div>
-
-    <div class="slider-wrapper">
-
-      <button class="slider-btn prev">&#10094;</button>
-
-      <div class="product-slider" id="productSlider">
-
-        <!-- Product Card -->
-        <a href="slicer.html" style="text-decoration: none;"><div class="product-card">
-          <img src="slicer.png" alt="">
-          <h4>Fruit &amp; Vegetable Slicing Machine</h4>
-            <p>Continuous slicing for factory-floor production runs.</p>
-        </div></a>
-
-        <a href="juicer.html" style="text-decoration: none;"><div class="product-card">
-          <img src="juicer.png" alt="">
-          <h4>Cold Press Slow Juicer</h4>
-            <p>Low-heat extraction that preserves flavour and nutrients.</p>
-        </div> </a>
-
-        <a href="printer.html" style="text-decoration: none;"><div class="product-card">
-          <img src="printer.png" alt="">
-          <h4>Handheld Batch Coding Printer</h4>
-            <p>Fast, clean batch and expiry coding for packaged goods.</p>
-        </div></a>
-
-       <a href="sheets.html" style="text-decoration: none;"> <div class="product-card">
-          <img src="sheets.png" alt="">
-          <h4>Dehydrator Mesh Sheets</h4>
-            <p>Durable, food-grade mesh trays for consistent drying.</p>
-        </div></a>
-
-       
+ 
+    <div class="import-grid" id="importGrid">
+ 
+      <div class="import-card" data-route="sea">
+        <div class="card-icon">
+          <svg viewBox="0 0 64 64" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 40h48l-5 14H13L8 40z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M18 40V24h20l8 16" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M32 24V12" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M26 16h10l4 8" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="card-tag">Import by Ship</span>
+        <h3>Sea Freight</h3>
+        <p>Best for bulk and heavy machinery orders. Full container (FCL) or shared container (LCL) options, with customs clearance handled at both ends.</p>
+        <ul>
+          <li>Lower cost per kg for large volumes</li>
+          <li>Ideal for machinery, spare parts &amp; bulk stock</li>
+          <li>Transit time: 25–35 days (port to port)</li>
+          <li>Full documentation &amp; customs support</li>
+        </ul>
+        <div class="card-footer">
+          <span class="eta">Typical transit: 4–5 weeks</span>
+        </div>
       </div>
-
-      <button class="slider-btn next">&#10095;</button>
-
+ 
+      <div class="import-card" data-route="air">
+        <div class="card-icon">
+          <svg viewBox="0 0 64 64" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 6l4 10 18 8-3 5-19-4-8 14 5 3-3 4-8-3-3 5-4-2 2-5-8-2 3-5 6 1 8-16-15-9 3-6 17 5L28 6h4z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="card-tag">Import by Air</span>
+        <h3>Air Freight</h3>
+        <p>Best for urgent, lightweight, or high-value shipments. Faster clearance and door-to-door delivery on request.</p>
+        <ul>
+          <li>Fastest option for time-sensitive orders</li>
+          <li>Ideal for samples, small parts &amp; urgent stock</li>
+          <li>Transit time: 4–7 days (airport to airport)</li>
+          <li>Real-time shipment tracking</li>
+        </ul>
+        <div class="card-footer">
+          <span class="eta">Typical transit: 5–7 days</span>
+        </div>
+      </div>
+ 
     </div>
-
+ 
+    <div class="import-cta">
+      <p>Need help deciding between sea and air freight for your order?</p>
+      <a href="#contact" class="btn-quote">Get a shipping quote</a>
+    </div>
+ 
   </div>
 </section>
+
+
 
 
 
@@ -1325,29 +1610,34 @@ document.addEventListener('DOMContentLoaded', function () {
     progressBar.style.width = pct + '%';
   }
 
-const productSlider = document.getElementById("productSlider");
+  /* ===== Product slider prev/next (works for every slider on the page) ===== */
+  document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
+    const slider = wrapper.querySelector('.product-slider');
+    const prevBtn = wrapper.querySelector('.slider-btn.prev');
+    const nextBtn = wrapper.querySelector('.slider-btn.next');
+    if (!slider || !prevBtn || !nextBtn) return;
 
-document.querySelector(".next").addEventListener("click", () => {
-    productSlider.scrollBy({
-        left: 325,
-        behavior: "smooth"
-    });
-});
+    function scrollAmount(){
+      const card = slider.querySelector('.product-card');
+      if (!card) return 260;
+      const gap = 20;
+      return card.offsetWidth + gap;
+    }
 
-document.querySelector(".prev").addEventListener("click", () => {
-    productSlider.scrollBy({
-        left: -325,
-        behavior: "smooth"
+    prevBtn.addEventListener('click', () => {
+      slider.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
     });
-});
+
+    nextBtn.addEventListener('click', () => {
+      slider.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+    });
+  });
 
   /* ===== Navbar on scroll ===== */
   const nav = document.getElementById('mainNav');
   function updateNav(){
     nav.classList.toggle('scrolled', window.scrollY > 60);
   }
-
-
 
   /* ===== Back to top ===== */
   const backToTop = document.getElementById('backToTop');
@@ -1372,10 +1662,9 @@ document.querySelector(".prev").addEventListener("click", () => {
   });
 
   /* ===== Typewriter effect in hero ===== */
- const words = ['Business Startup', 'Software Development', 'Brand Building', 'Consultation'];
+  const words = ['Business Startup', 'Software Development', 'Brand Building', 'Consultation'];
   const typedEl = document.getElementById('typedWord');
   let wordIndex = 0, charIndex = 0, deleting = false;
-
 
   function typeLoop(){
     const current = words[wordIndex];
@@ -1423,11 +1712,6 @@ document.querySelector(".prev").addEventListener("click", () => {
     });
   }
 
-  /* ===== Intersection Observer: reveal + counters ===== */
-  document.querySelectorAll(
-    '.hero .reveal, .about-section .reveal, .products-section .reveal, .services-section .reveal, .process-section .reveal, .testimonial-section .reveal, .contact-section .reveal'
-  ).forEach(el => {}); // already tagged with class="reveal" in HTML
-
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1467,6 +1751,24 @@ document.querySelector(".prev").addEventListener("click", () => {
       setTimeout(() => formSuccess.classList.add('d-none'), 6000);
     });
   }
+
+  /* ===== Cargo import cards reveal ===== */
+  (function () {
+    var cards = document.querySelectorAll('#importGrid .import-card');
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(function (c) { c.classList.add('is-visible'); });
+      return;
+    }
+    var cardObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(function (c) { cardObserver.observe(c); });
+  })();
 
 });
 
