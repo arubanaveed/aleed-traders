@@ -29,6 +29,42 @@
   --gold: #D9A441;
   --radius: 6px;
 }
+/* ===== Reduce side margins / widen usable content area =====
+   Bootstrap's default .container caps out at a fixed max-width
+   (1140px / 1320px etc.), so on large monitors there's a big
+   empty gap on both sides. This widens the container and makes
+   the side padding scale smoothly with viewport width instead
+   of jumping at breakpoints. */
+
+.container,
+.container-fluid{
+  width: 100%;
+  max-width: 1400px;          /* was ~1140-1320px by default, now wider */
+  padding-left: clamp(16px, 4vw, 48px);
+  padding-right: clamp(16px, 4vw, 48px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* On very large screens (ultra-wide monitors), cap it a bit more
+   so lines of text/cards don't stretch too thin, but still less
+   gap than the original default */
+@media (min-width: 1600px){
+  .container,
+  .container-fluid{
+    max-width: 1520px;
+  }
+}
+
+/* Small phones — keep a tight, comfortable edge padding */
+@media (max-width: 420px){
+  .container,
+  .container-fluid{
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
 
 *{ box-sizing: border-box; }
 html{ scroll-behavior: smooth; scroll-padding-top: 84px; }
@@ -447,6 +483,22 @@ section{ padding: 100px 0; position: relative; }
 .section-heading{
   text-align: center;
   margin-bottom: 40px;
+}
+
+.product-card .product-price {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  color: #3D5AFE;
+  margin-top: 1px;
+  letter-spacing: 0.3px;
+}
+
+.product-card .product-weight {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  margin-top: 1px;
 }
 
 .section-heading h2{
@@ -1112,7 +1164,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== Featured Dehydrated Fruits & Vegetables ===== -->
 <section class="featured-products" id="products">
   <div class="container">
@@ -1133,6 +1185,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <img src="apple.png" alt="Dehydrated Apple">
             <h4>Dehydrated Apple</h4>
             <p>Premium Quality</p>
+            <span class="product-price">Rs.100.00 PKR</span>
+            <span class="product-weight">20g Pack</span>
           </div>
         </a>
 
@@ -1141,6 +1195,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <img src="banana.png" alt="Dehydrated Banana Chips">
             <h4>Dehydrated Banana Chips</h4>
             <p>Natural Taste</p>
+            <span class="product-price">Rs.100.00 PKR</span>
+            <span class="product-weight">25g Pack</span>
           </div>
         </a>
 
@@ -1149,6 +1205,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <img src="orange.png" alt="Dehydrated Oranges">
             <h4>Dehydrated Oranges</h4>
             <p>No Preservatives</p>
+            <span class="product-price">Rs.549.00 PKR</span>
+            <span class="product-weight">100g Pack</span>
           </div>
         </a>
 
@@ -1157,6 +1215,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <img src="tomato.png" alt="Dehydrated Tomatoes">
             <h4>Dehydrated Tomatoes</h4>
             <p>Fresh &amp; Dry</p>
+            <span class="product-price">Rs.529.00 PKR</span>
+            <span class="product-weight">100g Pack</span>
           </div>
         </a>
 
@@ -1165,6 +1225,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <img src="onion.png" alt="Dehydrated Onions">
             <h4>Dehydrated Onions</h4>
             <p>Healthy Choice</p>
+            <span class="product-price">Rs.329.00 PKR</span>
+            <span class="product-weight">100g Pack</span>
           </div>
         </a>
 
@@ -1197,6 +1259,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <img src="slicer.png" alt="Fruit &amp; Vegetable Slicing Machine">
             <h4>Fruit &amp; Vegetable Slicing Machine</h4>
             <p>Continuous slicing for factory-floor production runs.</p>
+            <span class="product-price">Rs. 185,000</span>
+            <span class="product-weight">1 Year Warranty</span>
           </div>
         </a>
 
@@ -1205,6 +1269,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <img src="juicer.png" alt="Cold Press Slow Juicer">
             <h4>Cold Press Slow Juicer</h4>
             <p>Low-heat extraction that preserves flavour and nutrients.</p>
+            <span class="product-price">Rs. 95,000</span>
+            <span class="product-weight">1 Year Warranty</span>
           </div>
         </a>
 
@@ -1213,6 +1279,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <img src="printer.png" alt="Handheld Batch Coding Printer">
             <h4>Handheld Batch Coding Printer</h4>
             <p>Fast, clean batch and expiry coding for packaged goods.</p>
+            <span class="product-price">Rs. 45,000</span>
+            <span class="product-weight">6 Month Warranty</span>
           </div>
         </a>
 
@@ -1221,6 +1289,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <img src="sheets.png" alt="Dehydrator Mesh Sheets">
             <h4>Dehydrator Mesh Sheets</h4>
             <p>Durable, food-grade mesh trays for consistent drying.</p>
+            <span class="product-price">Rs. 12,000</span>
+            <span class="product-weight">Set of 5</span>
           </div>
         </a>
 
