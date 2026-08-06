@@ -200,6 +200,100 @@ h1,h2,h3,h4,h5{
   margin-bottom: 18px;
 }
 
+
+.pdp-price-box{
+  border: 1px solid var(--line); 
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin: 18px 0 26px;
+  box-shadow: 0 10px 30px rgba(20,21,26,.05);
+}
+
+.pdp-price-main{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  position: relative;
+}
+
+.pdp-price-tier{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pdp-tier-label{
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+.pdp-tier-sub{
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  opacity: .75;
+}
+
+.pdp-tier-price{
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.pdp-tier-price--accent{
+  color: var(--accent);
+}
+
+.pdp-price-divider{
+  width: 1px;
+  align-self: stretch;
+  background: var(--line);
+}
+
+.pdp-save-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(217,164,65,.12);
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-left: auto;
+}
+.pdp-save-badge i{ font-size: .75rem; }
+
+.pdp-stock{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: #3D5AFE;
+  margin-top: 14px;
+}
+.pdp-stock i{ font-size: .9rem; }
+
+@media (max-width: 480px){
+  .pdp-save-badge{ margin-left: 0; }
+}
+
+.pdp-title{
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
 .pdp-price-row{
   display: flex;
   align-items: center;
@@ -212,17 +306,6 @@ h1,h2,h3,h4,h5{
   font-weight: 700;
   font-size: 1.9rem;
   color: var(--gold);
-}
-.pdp-stock{
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: .82rem;
-  font-weight: 600;
-  color: #2E7D32;
-  background: rgba(46,125,50,.09);
-  padding: 7px 15px;
-  border-radius: 999px;
 }
 .pdp-stock i{ font-size: .85rem; }
 
@@ -392,10 +475,21 @@ h1,h2,h3,h4,h5{
       <div class="col-lg-6">
          <h1 class="pdp-title">Fruit &amp; Vegetable Slicing Machine</h1>
 
-        <div class="pdp-price-row">
-          <span class="pdp-price">Rs.5,000</span>
-          <span class="pdp-stock"><i class="bi bi-check-circle-fill"></i> In stock</span>
-        </div>
+       <div class="pdp-price-box">
+  <div class="pdp-price-main">
+    <div class="pdp-price-tier">
+      <span class="pdp-tier-label">Per Unit</span>
+      <span class="pdp-tier-price" style="color: #3D5AFE;">Rs. 60,000</span>
+    </div>
+    <div class="pdp-price-divider"></div>
+    <div class="pdp-price-tier">
+      <span class="pdp-tier-label">Bulk <span class="pdp-tier-sub">(5+ pcs)</span></span>
+      <span class="pdp-tier-price pdp-tier-price--accent">Rs. 50,000</span>
+    </div> 
+    <span class="pdp-save-badge"><i class="bi bi-tag-fill"></i> Save Rs. 10,000/unit</span>
+  </div>
+  <span class="pdp-stock"><i class="bi bi-check-circle-fill"></i> In stock</span>
+</div>
 
         <span class="pdp-qty-label">Quantity</span>
         <div class="pdp-qty">
